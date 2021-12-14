@@ -79,6 +79,12 @@ public class Maximo {
 		}
 	}
 
+	/**
+	 * Vérifie si le mot trouvé et la saisie sont identiques
+	 * Ce que j'aurais dû faire: comparer chaque caractères un à un au lieu de regarder si les deux chaines de caractères étaient identiques.
+	 * @param saisie
+	 * @return boolean
+	 */
 	private static boolean dansLeDico(char[] saisie) throws IOException{
 		System.out.println("dansLeDico --> DEBUG: -- Recherche d'une correspondance --");
 		String saisieString = String.valueOf(saisie);
