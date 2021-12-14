@@ -5,7 +5,7 @@ import java.util.Scanner;
 
 public class Maximo {
 
-	public static final String CHEMIN_FICHIER = "Module 1/Ressources/dictionnaire.txt";
+	public static final String CHEMIN_FICHIER = "Maximo/Ressources/dictionnaire.txt";
 	public static final int NB_MOTS = 22506;
 	public static Random r = new Random();
 
@@ -14,7 +14,7 @@ public class Maximo {
 		try {
 			// Tirage du mot aléatoirement
 			String mot = tirerMotAleatoirement().toLowerCase();
-			System.out.println("DEBUG: Mot à trouver = " + mot);
+			System.out.println("\nmain --> DEBUG: Mot à trouver = " + mot);
 
 			// Mélange du mot
 			char[] motMelange = melanger(mot);
@@ -26,12 +26,15 @@ public class Maximo {
 				char[] saisie = saisieUtilisateur(motMelange);
 
 				correct = bonnesLettres(saisie, mot.toCharArray());
-				//correct = dansLeDico(saisie);
-				System.out.println("RESULTAT: " + correct);
+				if (correct) {
+					correct = dansLeDico(saisie);
+				}
 			}
+
+			System.out.println("main --> Vous avez trouvé le mot mystère, félicitations !");
 			
 		} catch (IOException e) {
-			System.err.println("ERREUR : " + e );
+			System.err.println("main --> ERREUR : " + e );
 		}
 
 	}
@@ -43,7 +46,7 @@ public class Maximo {
 	 * @return boolean
 	 */
 	private static boolean bonnesLettres(char[] saisie, char[] motMelange) {
-		System.out.println("\nDEBUG: -- Vérification des lettres --");
+		System.out.println("\nbonnesLettres --> DEBUG: -- Vérification des lettres --");
 		int lettresValides = 0;
 		
 		/* Parcourt chaque caractère de la saisie et les compare avec ceux du mot, 
@@ -59,35 +62,45 @@ public class Maximo {
 				}
 			}
 		} catch (Exception e) {
-			System.err.println("ERREUR : " + e );
+			System.err.println("bonnesLettres --> ERREUR : " + e );
 		}
 
-		System.out.println("----- Saisie");
+		System.out.println("bonnesLettres --> DEBUG: Saisie");
 		System.out.println(saisie);
-		System.out.println("----- Mot mélangé");
+		System.out.println("bonnesLettres --> DEBUG: Mot mélangé");
 		System.out.println(motMelange);
 
 		// Vérifie si la saisie comporte les mêmes lettres que le mot 
 		if (lettresValides == motMelange.length) {
 			return true;
 		} else {
+			System.out.println("bonnesLettres --> Les lettres ne correspondent pas, veuillez réessayer.");
 			return false;
 		}
 	}
 
-	/*
-	private static boolean dansLeDico(char[] saisie){
-		System.out.println("DEBUG: -- Recherche d'une correspondance --");
+	private static boolean dansLeDico(char[] saisie) throws IOException{
+		System.out.println("dansLeDico --> DEBUG: -- Recherche d'une correspondance --");
+		String saisieString = String.valueOf(saisie);
+		Boolean correct = false;
+
 		try (FileInputStream fichier = new FileInputStream(CHEMIN_FICHIER);
 			Scanner s = new Scanner(fichier)) {
-				int numLigne = r.nextInt(NB_MOTS);
-				for (int i = 0; i < numLigne-1; i++) {
-					s.nextLine();
+				String motDictionnaire = "";
+				for (int i = 0; i < NB_MOTS; i++) {
+					motDictionnaire = s.nextLine().toLowerCase();
+					System.out.println(motDictionnaire + " - " + motDictionnaire.length());
+					if(saisieString == motDictionnaire){
+						System.out.println("dansLeDico --> DEBUG: Correct = true");
+						correct = true;
+					}
 				}
-				return s.nextLine();
 			}
+			System.out.println("dansLeDico --> Aucun mot n'a été trouvé dans le dictionnaire.");
+			System.out.println("dansLeDico --> DEBUG: Saisie");
+			System.out.println(saisieString + " - " + saisieString.length());
+			return correct;
 	}
-	*/
 
 	/**
 	 * Demande à l'utilisateur de saisir un mot
@@ -95,12 +108,12 @@ public class Maximo {
 	 * @return char[]
 	 */
 	private static char[] saisieUtilisateur(char[] motMelange){
-
-		System.out.println("\nDEBUG: -- Saisie de l'utilisateur --");
-		System.out.println("Pouvez-vous trouver le mot mélangé ? (minuscules)");
+		System.out.println("\nsaisieUtilisateur --> DEBUG: -- Saisie de l'utilisateur --");
+		System.out.println("saisieUtilisateur --> Pouvez-vous trouver le mot mélangé ?");
 		System.out.println(String.valueOf(motMelange));
 		Scanner s = new Scanner(System.in); 
-		String saisie = s.nextLine();
+		String saisie = s.nextLine().toLowerCase();
+		System.out.println("saisie" + saisie);
 
 		return saisie.toCharArray();
 	}
@@ -111,7 +124,7 @@ public class Maximo {
 	 * @return char[]
 	 */
 	private static char[] melanger(String mot) {
-		System.out.println("\nDEBUG: -- Mélange du mot --");
+		System.out.println("\nmelanger --> DEBUG: -- Mélange du mot --");
 
 		char[] motTableau = mot.toCharArray();
 		char[] motMelange = motTableau;
@@ -128,7 +141,7 @@ public class Maximo {
 			}
 
 		} catch (Exception e) {
-			System.out.println("ERREUR : " + e);
+			System.out.println("melanger --> ERREUR : " + e);
 		}
 		return motMelange;
 	}
@@ -139,12 +152,14 @@ public class Maximo {
 	 * @throws IOException
 	 */
 	private static String tirerMotAleatoirement() throws IOException {
-		System.out.println("\nDEBUG: -- Tirage du mot aléatoire. --");
+		System.out.println("\ntirerMotAleatoirement --> DEBUG: -- Tirage du mot aléatoire. --");
 
 		try (FileInputStream fichier = new FileInputStream(CHEMIN_FICHIER);
 			Scanner s = new Scanner(fichier)) {
 				int numLigne = r.nextInt(NB_MOTS);
-				System.out.println("DEBUG: Numéro de ligne = " + numLigne);
+				System.out.println("tirerMotAleatoirement --> DEBUG: Numéro de ligne = " + numLigne);
+
+				// Le -1 permet d'éviter l'initialisation d'une variable servant à stocker le résultat de la ligne trouvée à chaque itération, permettant de gagner en mémoire
 				for (int i = 0; i < numLigne-1; i++) {
 					s.nextLine();
 				}
