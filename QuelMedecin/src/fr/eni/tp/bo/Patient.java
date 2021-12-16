@@ -1,6 +1,7 @@
 package fr.eni.tp.bo;
 
 import java.time.LocalDate;
+import fr.eni.tp.bo.Adresse;
 
 public class Patient {
 	private String nom;
@@ -10,6 +11,7 @@ public class Patient {
 	private long secuSociale; 
 	private LocalDate naissance;
 	private String commentaire;
+	private Adresse adresse;
 	
 	/**
 	 * @param nom
@@ -21,7 +23,7 @@ public class Patient {
 	 * @param commentaire
 	 */
 	public Patient(String nom, String prenom, String tel, char sexe, long secuSociale, LocalDate naissance,
-			String commentaire) {
+			String commentaire, Adresse adresse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
@@ -30,6 +32,7 @@ public class Patient {
 		this.secuSociale = secuSociale;
 		this.naissance = naissance;
 		this.commentaire = commentaire;
+		this.adresse = adresse;
 	}
 
 	public String getNom() {
@@ -92,6 +95,11 @@ public class Patient {
 		}
 	}
 
+	public void afficherAdresse() {
+		adresse.afficher();
+	}
+
+
 	public void setCommentaire(String commentaire) {
 		this.commentaire = commentaire;
 	}
@@ -102,6 +110,8 @@ public class Patient {
 				"\n Sexe : " + getSexe() +
 				"\n Numéro de sécurité sociale : " + getSecuSociale() +
 				"\n Date de naissance : " + getNaissance() +
-				"\n Commentaires : " + getCommentaire());
+				"\n Commentaires : " + getCommentaire() +
+				"\n Adresse : ");
+		afficherAdresse();
 	}
 }

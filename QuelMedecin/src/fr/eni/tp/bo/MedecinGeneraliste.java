@@ -1,21 +1,25 @@
 package fr.eni.tp.bo;
 
+import fr.eni.tp.bo.Adresse;
+
 public class MedecinGeneraliste {
 	private String nom;
 	private String prenom;
 	private String tel;
 	private static int tarif;
+	private Adresse adresse;
 	
 	/**
 	 * @param nom
 	 * @param prenom
 	 * @param tel
 	 */
-	public MedecinGeneraliste(String nom, String prenom, String tel) {
+	public MedecinGeneraliste(String nom, String prenom, String tel, Adresse adresse) {
 		super();
 		this.nom = nom;
 		this.prenom = prenom;
 		this.tel = tel;
+		this.adresse = adresse;
 	}
 
 	public String getNom() {
@@ -50,10 +54,17 @@ public class MedecinGeneraliste {
 		MedecinGeneraliste.tarif = tarif;
 	}
 	
+	
+	public void afficherAdresse() {
+		adresse.afficher();
+	}
+
 	public void afficher() {
 		System.out.println(getNom() + " " + getPrenom() +  
 				"\n Téléphone : " + getTel() +
-				"\n Tarif : " + getTarif());
+				"\n Tarif : " + getTarif() +
+				"\n Adresse : ");
+		afficherAdresse();
 	}
 
 }
