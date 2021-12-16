@@ -1,6 +1,6 @@
-package fr.eni.ecole.quelMedecin.test;
+package fr.eni.tp.test;
 
-import fr.eni.ecole.quelMedecin.bo.MedecinGeneraliste;
+import fr.eni.tp.bo.MedecinGeneraliste;
 
 public class TestMedecin {
 
@@ -17,8 +17,8 @@ public class TestMedecin {
 		djemila.afficher();
 
 		System.out.println("--------------- Changement du numéro de ce médecin ---------------");
-		djemila.setNumeroDeTelephone("07-06-05-04-03");
-		System.out.printf("Nouveau numéro du Dr %s : %s%n", djemila.getNom(), djemila.getNumeroDeTelephone());
+		djemila.setTel("07-06-05-04-03");
+		System.out.printf("Nouveau numéro du Dr %s : %s%n", djemila.getNom(), djemila.getTel());
 		
 		System.out.println("-------------- Changement du prix de la consultation -------------");
 		MedecinGeneraliste.setTarif(23);

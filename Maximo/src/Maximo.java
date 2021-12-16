@@ -1,3 +1,4 @@
+
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.util.Random;
@@ -5,7 +6,7 @@ import java.util.Scanner;
 
 public class Maximo {
 
-	public static final String CHEMIN_FICHIER = "Maximo/Ressources/dictionnaire.txt";
+	public static final String CHEMIN_FICHIER = "Maximo/ressources/dictionnaire.txt";
 	public static final int NB_MOTS = 22506;
 	public static Random r = new Random();
 

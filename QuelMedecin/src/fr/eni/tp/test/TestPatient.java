@@ -1,8 +1,8 @@
-package fr.eni.ecole.quelMedecin.test;
+package fr.eni.tp.test;
 
 import java.time.LocalDate;
 
-import fr.eni.ecole.quelMedecin.bo.Patient;
+import fr.eni.tp.bo.Patient;
 
 public class TestPatient {
 

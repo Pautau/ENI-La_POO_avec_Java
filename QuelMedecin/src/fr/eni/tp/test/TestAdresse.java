@@ -1,6 +1,6 @@
-package fr.eni.ecole.quelMedecin.test;
+package fr.eni.tp.test;
 
-import fr.eni.ecole.quelMedecin.bo.Adresse;
+import fr.eni.tp.bo.Adresse;
 
 public class TestAdresse {
 	public static void main(String[] args) {
