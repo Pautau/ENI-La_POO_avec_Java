@@ -1,7 +1,6 @@
 package fr.eni.tp.bo;
 
 import java.time.LocalDate;
-import fr.eni.tp.bo.Adresse;
 
 public class Patient {
 	private String nom;

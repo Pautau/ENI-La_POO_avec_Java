@@ -1,13 +1,12 @@
 package fr.eni.tp.bo;
 
-import fr.eni.tp.bo.Adresse;
-
 public class MedecinGeneraliste {
 	private String nom;
 	private String prenom;
 	private String tel;
 	private static int tarif;
 	private Adresse adresse;
+	private Creneau[] creneaux = new Creneau[15]; 
 	
 	/**
 	 * @param nom
@@ -20,6 +19,22 @@ public class MedecinGeneraliste {
 		this.prenom = prenom;
 		this.tel = tel;
 		this.adresse = adresse;
+	}
+
+	void ajouterCreneau(Creneau creneauAAjouter) {
+		if(this != creneauAAjouter.getMedecin()) {
+			System.err.println("Ce créneau ne peux être associé à ce médecin car il est déjà associé à un autre");
+		} else {
+			int pos = 0;
+			while (pos < this.creneaux.length && this.creneaux[pos] != null)
+			pos++;
+			if (pos == this.creneaux.length) {
+				System.err.println("Trop de créneaux sont affectés à ce médecin");
+			}
+			else {
+				this.creneaux[pos] = creneauAAjouter;
+			}
+		}
 	}
 
 	public String getNom() {
@@ -65,6 +80,12 @@ public class MedecinGeneraliste {
 				"\n Tarif : " + getTarif() +
 				"\n Adresse : ");
 		afficherAdresse();
+		System.out.println("Creneaux :");
+		for (int i = 0; i < this.creneaux.length; i++){
+			if(this.creneaux[i] != null){
+				this.creneaux[i].afficher();
+			}
+		}
 	}
 
 }

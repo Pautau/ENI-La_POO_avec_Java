@@ -1,10 +1,10 @@
-package fr.eni.ecole.quelMedecin.test;
+package fr.eni.tp.test;
 
 import java.time.LocalTime;
 
-import fr.eni.ecole.quelMedecin.bo.Adresse;
-import fr.eni.ecole.quelMedecin.bo.Creneau;
-import fr.eni.ecole.quelMedecin.bo.MedecinGeneraliste;
+import fr.eni.tp.bo.Adresse;
+import fr.eni.tp.bo.Creneau;
+import fr.eni.tp.bo.MedecinGeneraliste;
 
 /**
  * @date 25 oct. 2018

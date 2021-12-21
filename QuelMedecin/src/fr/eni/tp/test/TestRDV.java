@@ -1,13 +1,13 @@
-package fr.eni.ecole.quelMedecin.test;
+package fr.eni.tp.test;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-import fr.eni.ecole.quelMedecin.bo.Adresse;
-import fr.eni.ecole.quelMedecin.bo.Creneau;
-import fr.eni.ecole.quelMedecin.bo.MedecinGeneraliste;
-import fr.eni.ecole.quelMedecin.bo.Patient;
-import fr.eni.ecole.quelMedecin.bo.RendezVous;
+import fr.eni.tp.bo.Adresse;
+import fr.eni.tp.bo.Creneau;
+import fr.eni.tp.bo.MedecinGeneraliste;
+import fr.eni.tp.bo.Patient;
+import fr.eni.tp.bo.RendezVous;
 
 /**
  * @date 25 oct. 2018
